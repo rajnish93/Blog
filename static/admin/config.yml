@@ -1,5 +1,7 @@
 backend:
-  name: test-repo
+  name: github
+  repo: rajnish93/Blog
+  branch: main
 
 media_folder: static/assets
 public_folder: assets
