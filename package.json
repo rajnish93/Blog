@@ -19,9 +19,13 @@
     "netlify-cms-app": "^2.15.63",
     "npm": "^8.3.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.5",
+    "@types/styled-components": "^5.1.19",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.0.1",
