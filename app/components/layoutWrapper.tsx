@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Footer from "@/components/footer";
+import siteMetadata from "@/data/siteMetadata";
 
 const LayoutWrapper = ({
   children,
@@ -13,7 +15,7 @@ const LayoutWrapper = ({
             <Link href="/" aria-label="Tailwind CSS Blog">
               <div className="flex items-center justify-between">
                 <div className="hidden h-6 text-2xl font-semibold sm:block">
-                  Rajnish Singh
+                  {siteMetadata.author}
                 </div>
               </div>
             </Link>
@@ -31,11 +33,7 @@ const LayoutWrapper = ({
           </div>
         </header>
         <main className="mb-auto">{children}</main>
-        <footer>
-          <div className="flex flex-col items-center mt-16">
-            <div>{`© ${new Date().getFullYear()}`}</div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
