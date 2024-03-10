@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/customLink";
 import siteMetadata from "@/data/siteMetadata";
 
 export default function Home() {
