@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import LayoutWrapper from "./components/layoutWrapper";
-import { AppThemeProvider } from "./appThemeProvider";
+import "@/globals.css";
+import LayoutWrapper from "@/components/layoutWrapper";
+import { AppThemeProvider } from "@/appThemeProvider";
 
 export const metadata: Metadata = {
   title: "Rajnish Singh",
