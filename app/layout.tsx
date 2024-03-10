@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "@/globals.css";
 import LayoutWrapper from "@/components/layoutWrapper";
 import { AppThemeProvider } from "@/appThemeProvider";
+import siteMetadata from "@/data/siteMetadata";
 
 export const metadata: Metadata = {
-  title: "Rajnish Singh",
-  description:
-    "As a fellow Front-End Engineer, I am thrilled to have you here. This blog is a hub for all things related to software development, where we explore the exciting world of web technologies, share insights, and discuss industry trends.",
+  title: siteMetadata.title,
+  description: siteMetadata.description,
 };
 
 export default function RootLayout({
