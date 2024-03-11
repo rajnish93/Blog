@@ -4,6 +4,7 @@ import siteMetadata from "@/data/siteMetadata";
 import headerNavLinks from "@/data/headerNavLinks";
 import SectionContainer from "@/components/sectionContainer";
 import Logo from "@/components/logo";
+import ThemeSwitch from "@/components/themeSwitch";
 
 const LayoutWrapper = ({
   children,
@@ -42,6 +43,7 @@ const LayoutWrapper = ({
                 </Link>
               ))}
             </div>
+            <ThemeSwitch />
           </div>
         </header>
         <main className="mb-auto">{children}</main>
