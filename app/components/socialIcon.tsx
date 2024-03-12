@@ -22,7 +22,7 @@ const components: Record<string, ComponentType> = {
 interface SocialIconProps {
   kind: string;
   href: string;
-  size: string;
+  size?: string;
 }
 
 const SocialIcon = ({ kind, href, size = "8" }: SocialIconProps) => {
