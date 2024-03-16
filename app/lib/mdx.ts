@@ -2,10 +2,11 @@ import matter from "gray-matter";
 import fs from "fs";
 import path from "path";
 import getAllFilesRecursively from "./utils/files";
+import kebabCase from "./utils/kebabCase";
 
 const root = process.cwd();
 
-export async function fetchMarkdownContent(folder: string, fileName: string) {
+export function fetchMarkdownContent(folder: string, fileName: string) {
   const file = fs
     .readdirSync(path.join(root, "app", "data", folder))
     .filter((f) => f.includes(fileName))[0];
@@ -25,7 +26,7 @@ export function formatSlug(slug: string) {
   return slug.replace(regex, "").replace(/\.(mdx|md)/, "");
 }
 
-export async function getAllFilesFrontMatter(folder: string) {
+export function getAllFilesFrontMatter(folder: string) {
   const prefixPaths = path.join(root, "app", "data", folder);
 
   const files = getAllFilesRecursively(prefixPaths);
@@ -62,10 +63,50 @@ export async function getAllFilesFrontMatter(folder: string) {
   });
 }
 
+export function getFiles(type: string) {
+  const prefixPaths = path.join(root, "app", "data", type);
+  const files = getAllFilesRecursively(prefixPaths);
+  // Only want to return blog/path and ignore root, replace is needed to work on Windows
+  return files.map((file) =>
+    file.slice(prefixPaths.length + 1).replace(/\\/g, "/")
+  );
+}
+
+export async function getAllTags(type: string) {
+  const files = getFiles(type);
+
+  let tagCount: TagCounts = {};
+  // Iterate through each post, putting all found tags into `tags`
+  files.forEach((file) => {
+    const source = fs.readFileSync(
+      path.join(root, "app", "data", type, file),
+      "utf8"
+    );
+    const { data } = matter(source);
+    if (data.tags && data.draft !== true) {
+      data.tags.forEach((tag: string) => {
+        const formattedTag = kebabCase(tag);
+        if (formattedTag in tagCount) {
+          tagCount[formattedTag] += 1;
+        } else {
+          tagCount[formattedTag] = 1;
+        }
+      });
+    }
+  });
+
+  return tagCount;
+}
+
 export interface PostProps {
   title: string;
   summary: string;
   tags: string[];
   slug: string;
+  draft?: string;
   date: string | null;
+}
+
+export interface TagCounts {
+  [key: string]: number;
 }
