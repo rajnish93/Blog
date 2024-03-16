@@ -8,7 +8,7 @@ import formatDate from "@/lib/utils/formatDate";
 interface BlogListProps {
   posts: PostProps[];
   title: string;
-  initialDisplayPosts: PostProps[];
+  initialDisplayPosts?: PostProps[];
 }
 
 export default function BlogList({
@@ -24,7 +24,7 @@ export default function BlogList({
 
   // If initialDisplayPosts exist, display it if no searchValue is specified
   const displayPosts =
-    initialDisplayPosts.length > 0 && !searchValue
+    initialDisplayPosts && initialDisplayPosts.length > 0 && !searchValue
       ? initialDisplayPosts
       : filteredBlogPosts;
 
