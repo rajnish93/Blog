@@ -1,5 +1,5 @@
 import BlogList from "@/components/blogList";
-import { getAllFilesFrontMatter, getAllTags } from "@/lib/mdx";
+import { getAllFilesFrontMatter } from "@/lib/mdx";
 import kebabCase from "@/lib/utils/kebabCase";
 
 interface pageProps {
