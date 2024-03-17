@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "@/components/customLink";
 import { PostProps } from "@/lib/mdx";
 import formatDate from "@/lib/utils/formatDate";
+import Tag from "@/components/tag";
 
 interface BlogListProps {
   posts: PostProps[];
@@ -82,6 +83,11 @@ export default function BlogList({
                           {title}
                         </Link>
                       </h3>
+                      <div className="flex flex-wrap">
+                        {tags.map((tag) => (
+                          <Tag key={tag} text={tag} />
+                        ))}
+                      </div>
                     </div>
                     <div className="prose text-gray-500 max-w-none dark:text-gray-400">
                       {summary}
