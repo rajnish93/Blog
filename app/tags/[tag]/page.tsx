@@ -6,8 +6,8 @@ interface pageProps {
   params: { tag: string };
 }
 
-export default function TagPage({ params }: pageProps) {
-  const allPosts = getAllFilesFrontMatter("blog");
+export default async function TagPage({ params }: pageProps) {
+  const allPosts = await getAllFilesFrontMatter("blog");
   const filteredPosts = allPosts.filter(
     (post) =>
       !post.draft && post.tags.map((t) => kebabCase(t)).includes(params.tag)
