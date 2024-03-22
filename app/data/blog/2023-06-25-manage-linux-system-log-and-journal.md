@@ -89,7 +89,8 @@ $ sudo find /var/log -type f -regex ".*\.[0-9]$"
 It will search all files in **/var/log** path with a **number ending in file name** Example:- **dmesg.0, dmesg.1**.
 To delete those files use **-delete**.
 
-- What is Journalctl:- <br />
+- What is Journalctl:-
+
   It is a tool for displaying and querying logs from systemd's logging service and journald. All the content of the logs are in binary format
   so to read the log message journalctl is used.
 
